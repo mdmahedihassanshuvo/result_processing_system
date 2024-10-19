@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% if object %}Edit{% else %}Add{% endif %} Student</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+<!-- Initialize Datepicker -->
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd', // Adjust format as needed
+            autoclose: true
+        });
+    });
+</script>
+{% endblock %}
