@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+Student-List
+{% endblock %}
+
 {% block content %}
 <h2>Student List</h2>
 <a href="{% url 'students:student_create' %}" class="btn btn-primary mb-2">Add Student</a>
@@ -18,6 +22,9 @@
             <td>{{ student.roll_number }}</td>
             <td>{{ student.name }}</td>
             <td>{{ student.class_level }}</td>
+            <td>
+                <a href="{% url 'students:student_details' student.id %}" class="btn btn-primary">Details</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

@@ -1,15 +1,16 @@
 # IMPORT FROM REST FRAMEWORK
-from rest_framework.generics import (
-    CreateAPIView,
-    ListAPIView
-)
+# from rest_framework.generics import (
+#     CreateAPIView,
+#     ListAPIView
+# )
 
 # IMPORT FROM DJANGO
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     CreateView,
+    DetailView,
 )
 
 # IMPORT FROM LOCAL
@@ -38,7 +39,7 @@ class StudentListView(ListView):
     context_object_name = "students"
 
     def get_queryset(self):
-        return Student.objects.all()
+        return Student.objects.all().order_by('class_level')
 
 
 class StudentCreateView(CreateView):
@@ -46,3 +47,12 @@ class StudentCreateView(CreateView):
     template_name = "students/student_form.html"
     form_class = StudentForm
     success_url = reverse_lazy("students:student-list")
+
+
+class StudentDetailsView(DetailView):
+    model = Student
+    template_name = "students/student_details.html"
+    context_object_name = "student"
+
+    def get_object(self):
+        return self.model.objects.get(pk=self.kwargs['pk'])
