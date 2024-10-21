@@ -9,5 +9,5 @@ from django.urls import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('students/', include("results.urls"))
+    path('results/', include("results.urls"))
 ]

@@ -18,17 +18,17 @@ from django.views.generic import (
 from .models import (
     Student,
     Subject,
-    Exam,
-    Result,
-    ResultPublish
+    # Exam,
+    # Result,
+    # ResultPublish
 )
-from .serializer import (
-    StudentSerializer,
-    SubjectSerializer,
-    ExamSerializer,
-    ResultSerializer,
-    ResultPublishSerializer
-)
+# from .serializer import (
+#     StudentSerializer,
+#     SubjectSerializer,
+#     ExamSerializer,
+#     ResultSerializer,
+#     ResultPublishSerializer,
+# )
 from results.forms.student_form import StudentForm
 
 #  Student CRUD view
@@ -47,7 +47,7 @@ class StudentCreateView(CreateView):
     model = Student
     template_name = "students/student_form.html"
     form_class = StudentForm
-    success_url = reverse_lazy("students:student-list")
+    success_url = reverse_lazy("student-list")
 
 
 class StudentDetailsView(DetailView):
@@ -65,4 +65,15 @@ class StudentUpdateView(UpdateView):
     fields = [
         "roll_number", "name", "class_level", "date_of_birth"
     ]
-    success_url = reverse_lazy("students:student-list")
+    success_url = reverse_lazy("student-list")
+
+
+# Subject CRUD View
+
+class SubjectListView(ListView):
+    model = Subject
+    template_name = "subjects/subject_list.html"
+    context_object_name = "subjects"
+
+    def get_queryset(self):
+        return Subject.objects.all()

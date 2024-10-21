@@ -6,7 +6,7 @@ Student-List
 
 {% block content %}
 <h2>Student List</h2>
-<a href="{% url 'students:student_create' %}" class="btn btn-primary mb-2">Add Student</a>
+<a href="{% url 'student_create' %}" class="btn btn-primary mb-2">Add Student</a>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -23,7 +23,7 @@ Student-List
             <td>{{ student.name }}</td>
             <td>{{ student.class_level }}</td>
             <td>
-                <a href="{% url 'students:student_details' student.id %}" class="btn btn-primary">Details</a>
+                <a href="{% url 'student_details' student.id %}" class="btn btn-primary">Details</a>
             </td>
         </tr>
         {% endfor %}
