@@ -36,7 +36,7 @@ Student Details
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
                     <a href="{% url 'students:student-list' %}" class="btn btn-primary">Back to Student List</a>
-                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'students:student_update' student.id %}" class="btn btn-primary">Edit</a>
                 </div>
             </div>
         </div>

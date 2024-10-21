@@ -3,6 +3,7 @@ from .views import (
     StudentCreateView,
     StudentListView,
     StudentDetailsView,
+    StudentUpdateView
 )
 
 app_name = "students"
@@ -15,4 +16,7 @@ urlpatterns = [
         '<int:pk>/details/', StudentDetailsView.as_view(),
         name='student_details'
     ),
+    path(
+        '<int:pk>/update/', StudentUpdateView.as_view(), name="student_update"
+    )
 ]

@@ -11,6 +11,7 @@ from django.views.generic import (
     ListView,
     CreateView,
     DetailView,
+    UpdateView
 )
 
 # IMPORT FROM LOCAL
@@ -56,3 +57,12 @@ class StudentDetailsView(DetailView):
 
     def get_object(self):
         return self.model.objects.get(pk=self.kwargs['pk'])
+
+
+class StudentUpdateView(UpdateView):
+    model = Student
+    template_name = "students/student_form.html"
+    fields = [
+        "roll_number", "name", "class_level", "date_of_birth"
+    ]
+    success_url = reverse_lazy("students:student-list")
