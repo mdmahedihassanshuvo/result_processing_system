@@ -7,7 +7,6 @@ from .views import (
     SubjectListView
 )
 
-# urls
 urlpatterns = [
     # Student URLs
     path('v1/students/', StudentListView.as_view(), name='student-list'),
